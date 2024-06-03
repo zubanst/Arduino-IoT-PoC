@@ -17,15 +17,17 @@ This is a proof of concept for connected office furniture featuring one RFID RCC
 
 The ![schematic](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/IoT-project.pdf) for this proof of concept is attached to the project.
 
-## Arduino Nano ESP32
+## Details of the devices
+
+### Arduino Nano ESP32
 
 The [Nano ESP32](https://store.arduino.cc/products/nano-esp32) is a powerful addition to the Arduino ecosystem that brings the popular ESP32-S3 to the world of Arduino and MicroPython programming. Whether you're a beginner stepping into the world of IoT or MicroPython, or an advanced user looking to incorporate it into your next product, the Nano ESP32 is the perfect choice. It covers all your needs to kick-start your IoT or MicroPython project like this proof of concept.
 
-### Pinout
+#### Pinout
 
 ![Arduino Nano ESP32 pinout](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/arduino-nano-esp32-pinout.jpg)
 
-## RC522 RFID Reader/Writer Module
+### RC522 RFID Reader/Writer Module
 
 The RFID system has two components: the RFID reader and the tags. They are also called PCD (Proximity Coupling Device) and PICC (Proximity Integrated Circuit Card).
 
@@ -35,7 +37,7 @@ The RFID tag can be either passive or active. Active tags are powered by batteri
 
 In this proof of concept we will use a RFID card to broadcast commands to a WiFi connected device. 
 
-### Pinout
+#### Pinout
 
 ![RC522 RFID pinout](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/RC522-RFID-Reader-Module-Pinout.jpg)
 
