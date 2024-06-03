@@ -24,7 +24,7 @@ The RFID tag can be either passive or active. Active tags are powered by batteri
 
 ### Pinout
 
-![RC522 RFID pinout](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/arduino-nano-esp32-pinout.jpg)
+![RC522 RFID pinout](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/RC522-RFID-Reader-Module-Pinout.jpg)
 
 ## Arduino IDE
 
