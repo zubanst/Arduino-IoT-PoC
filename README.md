@@ -22,6 +22,8 @@ The RFID reader consists of an antenna to emit high-frequency EM waves and a rea
 
 The RFID tag can be either passive or active. Active tags are powered by batteries while the passive RFID tags are powered by energy from the reader’s interrogating EM waves. The tags are available in different forms or shapes like cards, tags, key forbs, or stickers. Whatever the shape, the RFID tag will consist of an antenna and the RFID chip, which will store all the data. When triggered by an electromagnetic interrogation pulse from a nearby RFID reader, the tag will transmit data back to the reader. The reader will then analyze this data to identify the tag. Unlike a barcode or a QR code, the tag does not need to be within the reader’s line of sight. This makes it easier to process and can be used for tracking objects in closed space.
 
+In this proof of concept we will use a RFID card to broadcast commands to a WiFi connected device. 
+
 ### Pinout
 
 ![RC522 RFID pinout](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/RC522-RFID-Reader-Module-Pinout.jpg)
