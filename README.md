@@ -30,7 +30,7 @@ Bluetooth
 The NORA-W106-10B module supports Bluetooth® LE v5.0 with an output power EIRP at up to 10 dBm and data rates up to 2 Mbps. It has the option to scan and advertise simultaneously, as well as supporting multiple connections in peripheral/central mode.
 Pinout
 
-Arduino Nano ESP32 pinout
+![Arduino Nano ESP32 pinout](https://github.com/zubanst/arduino-nano-esp32-pinout.jpg)
 Arduino IDE
 
 Use Arduino IDE 2.x. Go to the Board Manager, and type "esp32" into the search box. Install "esp32 by Arduino". This is different from "esp32 by Espressif". The Arduino-supplied package includes support for the Arduino Nano ESP32.
