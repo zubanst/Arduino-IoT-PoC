@@ -12,7 +12,7 @@ The [Nano ESP32](https://store.arduino.cc/products/nano-esp32) is a powerful add
 
 ### Pinout
 
-![Arduino Nano ESP32 pinout](https://github.com/zubanst/arduino-nano-esp32-pinout.jpg)
+![Arduino Nano ESP32 pinout](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/arduino-nano-esp32-pinout.jpg)
 
 ## RC522 RFID Reader/Writer Module
 
@@ -21,6 +21,10 @@ The RFID system has two components: the RFID reader and the tags. They are also 
 The RFID reader consists of an antenna to emit high-frequency EM waves and a reader/writer. MFRC522 from NXP is an example of such an integrated circuit. Since we are using high-frequency waves in the megahertz range, the size of the antenna can be small.
 
 The RFID tag can be either passive or active. Active tags are powered by batteries while the passive RFID tags are powered by energy from the reader’s interrogating EM waves. The tags are available in different forms or shapes like cards, tags, key forbs, or stickers. Whatever the shape, the RFID tag will consist of an antenna and the RFID chip, which will store all the data. When triggered by an electromagnetic interrogation pulse from a nearby RFID reader, the tag will transmit data back to the reader. The reader will then analyze this data to identify the tag. Unlike a barcode or a QR code, the tag does not need to be within the reader’s line of sight. This makes it easier to process and can be used for tracking objects in closed space.
+
+### Pinout
+
+![RC522 RFID pinout](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/arduino-nano-esp32-pinout.jpg)
 
 ## Arduino IDE
 
