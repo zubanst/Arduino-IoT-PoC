@@ -11,7 +11,7 @@ This is a proof of concept for connected office furniture featuring one RFID RCC
 - Two Arduino Nano ESP32 devices
 - One RC522 RFID module
 - RFID cards
-- Leds, resistors
+- LEDs, resistors
 
 ## Arduino Nano ESP32
 
