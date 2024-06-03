@@ -6,32 +6,17 @@ This is a proof of concept for connected office furniture featuring one RFID RCC
 - b
 - c
 
-# Arduino Nano ESP32
+## Arduino Nano ESP32
 
-The Nano ESP32 brings the ESP32-S3 to the world of Arduino and MicroPython programming. It uses the well-known Arduino Nano form factor and includes Wi-Fi and Bluetooth. It supports Arduino and MicroPython programming and works (from August 2023 onwards) with Arduino IoT Cloud.
-ESP32-S3
+The [Nano ESP32](https://store.arduino.cc/products/nano-esp32) is a powerful addition to the Arduino ecosystem that brings the popular ESP32-S3 to the world of Arduino and MicroPython programming. Whether you're a beginner stepping into the world of IoT or MicroPython, or an advanced user looking to incorporate it into your next product, the Nano ESP32 is the perfect choice. It covers all your needs to kick-start your IoT or MicroPython project like this proof of concept.
 
-The processor used by the board is the u-blox® NORA-W106 (ESP32-S3).
-
-    CPU: Xtensa LX7, 240 MHz dual-core
-    RAM: 512 kB
-    Flash: 8192 kB
-
-Wi-Fi
-
-The NORA-W106-10B module supports the Wi-Fi® 4 IEEE 802.11 standards b/g/n, with an output power EIRP at up to 10 dBm. The max range for this module is 500 meters.
-
-    802.11b: 11 Mbit/s
-    802.11g: 54 Mbit/s
-    802.11n: 72 Mbit/s max at HT-20 (20 MHz), 150 Mbit/s max at HT-40 (40 MHz)
-
-Bluetooth
-
-The NORA-W106-10B module supports Bluetooth® LE v5.0 with an output power EIRP at up to 10 dBm and data rates up to 2 Mbps. It has the option to scan and advertise simultaneously, as well as supporting multiple connections in peripheral/central mode.
-Pinout
+### Pinout
 
 ![Arduino Nano ESP32 pinout](https://github.com/zubanst/arduino-nano-esp32-pinout.jpg)
-Arduino IDE
+
+
+
+## Arduino IDE
 
 Use Arduino IDE 2.x. Go to the Board Manager, and type "esp32" into the search box. Install "esp32 by Arduino". This is different from "esp32 by Espressif". The Arduino-supplied package includes support for the Arduino Nano ESP32.
 
