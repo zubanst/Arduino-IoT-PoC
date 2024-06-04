@@ -1,7 +1,7 @@
 # Arduino-IoT-PoC
 ## Introduction
 
-This is a proof of concept for connected office furniture featuring one RFID RCC522 module connected to a Arduino Nano ESP32 getting commands from a RFID card and broadcasting the command through Wi-Fi to a second Arduino Nano ESP32. The first Arduino Nano ESP32 is the command center and the second is a regular device attached to furniture. The storyboard of the proof of concept is this:
+This is a proof of concept for connected office furniture featuring one RFID RC522 module connected to a Arduino Nano ESP32 getting commands from a RFID card and broadcasting the command through Wi-Fi to a second Arduino Nano ESP32. The first Arduino Nano ESP32 is the command center and the second is a regular device attached to furniture. The storyboard of the proof of concept is this:
 - Register specific RFID card to the RFID control device
 - Create Wi-Fi network with Arduino Nano ESP32 as Access point
 - Broadcast RFID command through the Wi-Fi network
