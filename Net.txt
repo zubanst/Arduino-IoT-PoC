@@ -1,0 +1,15 @@
+"A1" pin "17" (pinfunction "3V3")	"J1" pin "1" (pinfunction "Vcc_3.3V") 
+"A1" pin "5" (pinfunction "D2")  	"D1" pin "2" (pinfunction "A")   
+"A1" pin "6" (pinfunction "D3")	 	"D2" pin "2" (pinfunction "A") 
+"A1" pin "12" (pinfunction "D9") 	"J1" pin "2" (pinfunction "RST") 
+"A1" pin "13" (pinfunction "D10") 	"J1" pin "8" (pinfunction "SS/SDA/Rx") 
+"A1" pin "14" (pinfunction "D11") 	"J1" pin "6" (pinfunction "MOSI") 
+"A1" pin "15" (pinfunction "D12")	"J1" pin "5" (pinfunction "MISO/SCL/Tx") 
+"A1" pin "16" (pinfunction "D13")	"J1" pin "7" (pinfunction "SCK") 
+"A2" pin "8" (pinfunction "D5")		"D3" pin "2" (pinfunction "A") 
+"A2" pin "4" (pinfunction "GND") 	"R3" pin "1" 
+"D1" pin "1" (pinfunction "K") 		"R1" pin "2" 
+"D2" pin "1" (pinfunction "K") 		"R2" pin "2" 
+"D3" pin "1" (pinfunction "K") 		"R3" pin "2" 
+"A1" pin "29" (pinfunction "GND") "J1" pin "3" (pinfunction "GND") "R1" pin "1" "R2" pin "1" 
+    
