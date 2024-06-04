@@ -53,7 +53,8 @@ Select the Arduino Nano ESP32 with the COM port. Under Tools->Port pick from the
 ### Get the RFID card UID
 
 After having complete the wiring of the Arduino Nano ESP32 with the RFID card, A1 from the schematic, connect the device to the PC with the Arduino IDE. In the IDE, go to File -> Examples -> (Examples from custom libraries) MFRC522 -> DumpInfo, open the sketch and upload it to the device. In the Tools menu open the serial monitor, put your RFID card near the RFID reader and watch in the serial monitor the dump of the 1KB info from the card, including the card's UID. We will need this UID in the next step. This will be the card recognized as allowed to broadcast commands.
-The code:
+
+The code (DumpInfo.ino):
 ```
 /*
  * --------------------------------------------------------------------------------------------------------------------
