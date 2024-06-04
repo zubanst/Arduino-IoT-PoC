@@ -1,19 +1,19 @@
 # Arduino-IoT-PoC
-### Introduction
+## Introduction
 
 This is a proof of concept for connected office furniture featuring one RFID RCC522 module connected to a Arduino Nano ESP32 getting commands from a RFID card and broadcasting the command through WiFi to a second Arduino Nano ESP32. The first Arduino Nano ESP32 is the command center and the second is a regular device attached to furniture. The storyboard of the proof of concept is this:
 - Register specific RFID card to the RFID control device
 - Create WiFi network with Arduino Nano ESP32 as Access point
 - Broadcast RFID command through the WiFi network
 
-## Devices for the proof of concept
+### Devices for the proof of concept
 
 - Two Arduino Nano ESP32 devices
 - One RC522 RFID module
 - RFID cards
 - LEDs, resistors
 
-## Shematic
+### Shematic
 
 The ![schematic](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/IoT-project.pdf) for this proof of concept is attached to the project.
 
@@ -44,120 +44,87 @@ In this proof of concept we will use a RFID card to broadcast commands to a WiFi
 ## Arduino IDE
 
 Use Arduino IDE 2.x. Go to the Board Manager, and type "esp32" into the search box. Install "esp32 by Arduino". This is different from "esp32 by Espressif". The Arduino-supplied package includes support for the Arduino Nano ESP32.
+Go now to the Library manager, and type "rc522" into the search box. Install the "MFRC522 by GithubCommunity" library to be able to use the RFID card.
 
-Make sure you select the Arduino Nano ESP32 with the DFU port, not the COM port. Under Tools->Port pick from the "dfu ports" list, not from "Serial ports".
-Read from a potentiometer and publish over MQTT
+Select the Arduino Nano ESP32 with the COM port. Under Tools->Port pick from the "Serial ports".
 
-The middle pin of the potentiometer is connected to pin A0 on the Nano ESP32.
+## Programming
+### Get the RFID card UID
 
-#include <ArduinoMqttClient.h>
-#include <WiFi.h>
+After having complete the wiring of the Arduino Nano ESP32 A1 with the RFID card from the schematic, connect the device to the PC with the Arduino IDE. In the IDE, go to File -> Examples -> (Examples from custom libraries) MFRC522 -> DumpInfo, open the sketch and upload it to the device. In the Tools menu open the serial monitor, put your RFID card near the RFID reader and watch in the serial monitor the dump of the 1KB info from the card, including the card's UID. We will need this UID in the next step. This will be the card recognized as allowed to broadcast commands.
+The code:
+```
+/*
+ * --------------------------------------------------------------------------------------------------------------------
+ * Example sketch/program showing how to read data from a PICC to serial.
+ * --------------------------------------------------------------------------------------------------------------------
+ * This is a MFRC522 library example; for further details and other examples see: https://github.com/miguelbalboa/rfid
+ * 
+ * Example sketch/program showing how to read data from a PICC (that is: a RFID Tag or Card) using a MFRC522 based RFID
+ * Reader on the Arduino SPI interface.
+ * 
+ * When the Arduino and the MFRC522 module are connected (see the pin layout below), load this sketch into Arduino IDE
+ * then verify/compile and upload it. To see the output: use Tools, Serial Monitor of the IDE (hit Ctrl+Shft+M). When
+ * you present a PICC (that is: a RFID Tag or Card) at reading distance of the MFRC522 Reader/PCD, the serial output
+ * will show the ID/UID, type and any data blocks it can read. Note: you may see "Timeout in communication" messages
+ * when removing the PICC from reading distance too early.
+ * 
+ * If your reader supports it, this sketch/program will read all the PICCs presented (that is: multiple tag reading).
+ * So if you stack two or more PICCs on top of each other and present them to the reader, it will first output all
+ * details of the first and then the next PICC. Note that this may take some time as all data blocks are dumped, so
+ * keep the PICCs at reading distance until complete.
+ * 
+ * @license Released into the public domain.
+ * 
+ * Typical pin layout used:
+ * -----------------------------------------------------------------------------------------
+ *             MFRC522      Arduino       Arduino   Arduino    Arduino          Arduino
+ *             Reader/PCD   Uno/101       Mega      Nano v3    Leonardo/Micro   Pro Micro
+ * Signal      Pin          Pin           Pin       Pin        Pin              Pin
+ * -----------------------------------------------------------------------------------------
+ * RST/Reset   RST          9             5         D9         RESET/ICSP-5     RST
+ * SPI SS      SDA(SS)      10            53        D10        10               10
+ * SPI MOSI    MOSI         11 / ICSP-4   51        D11        ICSP-4           16
+ * SPI MISO    MISO         12 / ICSP-1   50        D12        ICSP-1           14
+ * SPI SCK     SCK          13 / ICSP-3   52        D13        ICSP-3           15
+ *
+ * More pin layouts for other boards can be found here: https://github.com/miguelbalboa/rfid#pin-layout
+ */
 
-#include "arduino_secrets.h"
-///////please enter your sensitive data in the Secret tab/arduino_secrets.h
-char ssid[] = SECRET_SSID;        // your network SSID (name)
-char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as key for WEP)
+#include <SPI.h>
+#include <MFRC522.h>
 
-WiFiClient wifiClient;
-MqttClient mqttClient(wifiClient);
+#define RST_PIN         9          // Configurable, see typical pin layout above
+#define SS_PIN          10         // Configurable, see typical pin layout above
 
-const char broker[] = "test.mosquitto.org"; // Address of the MQTT server
-int        port     = 1883;
-const char topic[]  = "CsHfaWQD";
-const char topicA[]  = "CsHfaWQDA";
-const char topicC[]  = "CsHfaWQDC";
-int counter = 0;
-int oldvalue = 0;
+MFRC522 mfrc522(SS_PIN, RST_PIN);  // Create MFRC522 instance
 
 void setup() {
-  Serial.begin(115200);
-  delay(5000);
-  pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(LED_RED, OUTPUT);
-  pinMode(LED_GREEN, OUTPUT);
-  pinMode(LED_BLUE, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
-  digitalWrite(LED_RED, LOW);
-  digitalWrite(LED_BLUE, HIGH);
-  digitalWrite(LED_GREEN, HIGH);
-
-  // attempt to connect to Wifi network:
-  Serial.print("Attempting to connect to WPA SSID: ");
-  Serial.println(ssid);
-  WiFi.begin(ssid, pass);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("Connected to the network!");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-  Serial.println();
-
-  digitalWrite(LED_RED, HIGH);
-  digitalWrite(LED_GREEN, LOW);
-  digitalWrite(LED_BLUE, HIGH);
-
-  // You can provide a username and password for authentication
-  // mqttClient.setUsernamePassword("user", "password");
-  Serial.print("Attempting to connect to the MQTT broker: ");
-  Serial.println(broker);
-
-  while (!mqttClient.connect(broker, port)) {
-    Serial.print("MQTT connection failed! Error code = ");
-    Serial.println(mqttClient.connectError());
-  }
-
-  Serial.println("You're connected to the MQTT broker!");
-  Serial.println();
-
-  digitalWrite(LED_RED, HIGH);
-  digitalWrite(LED_GREEN, HIGH);
-  digitalWrite(LED_BLUE, HIGH);
-  digitalWrite(LED_BUILTIN, HIGH);
+	Serial.begin(9600);		// Initialize serial communications with the PC
+	while (!Serial);		// Do nothing if no serial port is opened (added for Arduinos based on ATMEGA32U4)
+	SPI.begin();			// Init SPI bus
+	mfrc522.PCD_Init();		// Init MFRC522
+	delay(4);				// Optional delay. Some board do need more time after init to be ready, see Readme
+	mfrc522.PCD_DumpVersionToSerial();	// Show details of PCD - MFRC522 Card Reader details
+	Serial.println(F("Scan PICC to see UID, SAK, type, and data blocks..."));
 }
 
-
-// the loop routine runs over and over again forever:
 void loop() {
-  // read the input on analog pin 0 (which goes from 0 - 4095)
-  int sensorValue = analogRead(A0);
-  if (abs(sensorValue - oldvalue) > 75) {
-    oldvalue = sensorValue;
-    Serial.print("Analog: "); Serial.println(sensorValue);
-    Serial.print("Counter: "); Serial.println(counter);
+	// Reset the loop if no new card present on the sensor/reader. This saves the entire process when idle.
+	if ( ! mfrc522.PICC_IsNewCardPresent()) {
+		return;
+	}
 
-    // Text log
-    mqttClient.beginMessage(topic);
-    mqttClient.print("Analog: "); mqttClient.println(sensorValue);
-    mqttClient.print("Counter: "); mqttClient.println(counter);
-    mqttClient.endMessage();
-    Serial.print("Sent MQTT message for ");
-    Serial.println(topic);
+	// Select one of the cards
+	if ( ! mfrc522.PICC_ReadCardSerial()) {
+		return;
+	}
 
-    // Potentiometer
-    mqttClient.beginMessage(topicA);
-    mqttClient.print(sensorValue);
-    mqttClient.endMessage();
-    Serial.print("Sent MQTT message for ");
-    Serial.println(topicA);
-
-    // Counter
-    mqttClient.beginMessage(topicC);
-    mqttClient.print(counter);
-    mqttClient.endMessage();
-    Serial.print("Sent MQTT message for ");
-    Serial.println(topicC);
-
-    counter++;
-    delay(100);
-  }
+	// Dump debug info about the card; PICC_HaltA() is automatically called
+	mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
 }
+```
 
-You will also need a arduino_secrets.h file like this:
 
-#define SECRET_SSID "MYWIFINET"
 #define SECRET_PASS "secretpassword"
 
