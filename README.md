@@ -44,6 +44,7 @@ In this proof of concept we will use a RFID card to broadcast commands to a WiFi
 ## Arduino IDE
 
 Use Arduino IDE 2.x. Go to the Board Manager, and type "esp32" into the search box. Install "esp32 by Arduino". This is different from "esp32 by Espressif". The Arduino-supplied package includes support for the Arduino Nano ESP32.
+
 Go now to the Library manager, and type "rc522" into the search box. Install the "MFRC522 by GithubCommunity" library to be able to use the RFID card.
 
 Select the Arduino Nano ESP32 with the COM port. Under Tools->Port pick from the "Serial ports".
@@ -51,7 +52,7 @@ Select the Arduino Nano ESP32 with the COM port. Under Tools->Port pick from the
 ## Programming
 ### Get the RFID card UID
 
-After having complete the wiring of the Arduino Nano ESP32 A1 with the RFID card from the schematic, connect the device to the PC with the Arduino IDE. In the IDE, go to File -> Examples -> (Examples from custom libraries) MFRC522 -> DumpInfo, open the sketch and upload it to the device. In the Tools menu open the serial monitor, put your RFID card near the RFID reader and watch in the serial monitor the dump of the 1KB info from the card, including the card's UID. We will need this UID in the next step. This will be the card recognized as allowed to broadcast commands.
+After having complete the wiring of the Arduino Nano ESP32 with the RFID card, A1 from the schematic, connect the device to the PC with the Arduino IDE. In the IDE, go to File -> Examples -> (Examples from custom libraries) MFRC522 -> DumpInfo, open the sketch and upload it to the device. In the Tools menu open the serial monitor, put your RFID card near the RFID reader and watch in the serial monitor the dump of the 1KB info from the card, including the card's UID. We will need this UID in the next step. This will be the card recognized as allowed to broadcast commands.
 The code:
 ```
 /*
