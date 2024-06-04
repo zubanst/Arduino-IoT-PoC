@@ -144,7 +144,7 @@ Sector Block   0  1  2  3   4  5  6  7   8  9 10 11  12 13 14 15  AccessBits
 
 The second Arduino Nano ESP32, the A2 from the schematic will be programmed as Access Point and simple web server, getting commands from the local network. Commands will trigger LED activity as proof for the web call. 
 
-The code (DumpInfo.ino):
+The code (SimpleWiFi-Server.ino):
 
 ```
 /*
