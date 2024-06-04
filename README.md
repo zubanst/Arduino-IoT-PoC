@@ -127,5 +127,4 @@ void loop() {
 ```
 
 
-#define SECRET_PASS "secretpassword"
 
