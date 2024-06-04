@@ -43,7 +43,7 @@ In this proof of concept we will use a RFID card to broadcast commands to a Wi-F
 
 ## Arduino IDE
 
-Use ![Arduino IDE](https://www.arduino.cc/en/software) to prepare the boards and upload the software. In the Arduino IDE, go to the Board Manager, and type "esp32" into the search box. Install "esp32 by Arduino". This is different from "esp32 by Espressif". The Arduino-supplied package includes support for the Arduino Nano ESP32.
+Use [Arduino IDE](https://www.arduino.cc/en/software) to prepare the boards and upload the software. In the Arduino IDE, go to the Board Manager, and type "esp32" into the search box. Install "esp32 by Arduino". This is different from "esp32 by Espressif". The Arduino-supplied package includes support for the Arduino Nano ESP32.
 
 Go now to the Library manager, and type "rc522" into the search box. Install the "MFRC522 by GithubCommunity" library to be able to use the RFID card.
 
