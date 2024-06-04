@@ -13,7 +13,7 @@ This is a proof of concept for connected office furniture featuring one RFID RCC
 - RFID cards
 - LEDs, resistors
 
-### Shematic
+### Schematic
 
 The ![schematic](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/IoT-project.pdf) for this proof of concept is attached to the project.
 
@@ -35,7 +35,7 @@ The RFID reader consists of an antenna to emit high-frequency EM waves and a rea
 
 The RFID tag can be either passive or active. Active tags are powered by batteries while the passive RFID tags are powered by energy from the reader’s interrogating EM waves. The tags are available in different forms or shapes like cards, tags, key forbs, or stickers. Whatever the shape, the RFID tag will consist of an antenna and the RFID chip, which will store all the data. When triggered by an electromagnetic interrogation pulse from a nearby RFID reader, the tag will transmit data back to the reader. The reader will then analyze this data to identify the tag. Unlike a barcode or a QR code, the tag does not need to be within the reader’s line of sight. This makes it easier to process and can be used for tracking objects in closed space.
 
-In this proof of concept we will use a RFID card to broadcast commands to a WiFi connected device. 
+In this proof of concept we will use a RFID card to broadcast commands to a Wi-Fi connected device. 
 
 #### Pinout
 
@@ -127,7 +127,7 @@ void loop() {
 }
 ```
 
-And the output :
+And the output : (note the card UID; 0xBC, 0xDB, 0x2D, 0x17)
 
 ```
 Card UID: BC DB 2D 17
@@ -262,7 +262,7 @@ void loop(){
 
 ### 3. Finally program the RFID connected Arduino Nano ESP32 to connect to the AP and send commands
 
-Now we are ready to programm the A1 device from the schematic to connect to the previously created AP. When the selected RFID card with the UID recorded in the first step is presented to the card reader, the green LED of the device assembly will turn on for few seconds and the programm will send the command to the second device A2 by a web call through the WiFi network. If any other RFID card is presented to the RFID card reader, the red LED of the device assembly will turn on for few seconds and no command is sent to the A2 device.
+Now we are ready to program the A1 device from the schematic to connect to the previously created AP. When the selected RFID card with the UID recorded in the first step is presented to the card reader, the green LED of the device assembly will turn on for few seconds and the program will send the command to the second device A2 by a web call through the Wi-Fi network. If any other RFID card is presented to the RFID card reader, the red LED of the device assembly will turn on for few seconds and no command is sent to the A2 device.
 
 Provided the wiring is already in place, here is the code (RFIDtoWebServer.ino):
 
