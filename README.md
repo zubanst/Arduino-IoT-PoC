@@ -262,7 +262,7 @@ void loop(){
 
 ### 3. Finally program the RFID connected Arduino Nano ESP32 to connect to the AP and send commands
 
-Now we are ready to programm the A1 device from the schematic to connect the previously created AP. When teh selected RFID card with the UID recorded in the first step is presented to the card reader, the green LED of the device assembly will turn on for few seconds and the programm will send the command to the second device A2 by a web call through the WiFi network. If any other RFID card is presented to the RFID card reader, the red LED of the device assembly will turn on for few seconds. No command is sent to the A2 device.
+Now we are ready to programm the A1 device from the schematic to connect to the previously created AP. When the selected RFID card with the UID recorded in the first step is presented to the card reader, the green LED of the device assembly will turn on for few seconds and the programm will send the command to the second device A2 by a web call through the WiFi network. If any other RFID card is presented to the RFID card reader, the red LED of the device assembly will turn on for few seconds and no command is sent to the A2 device.
 
 Provided the wiring is already in place, here is the code (RFIDtoWebServer.ino):
 
