@@ -378,6 +378,6 @@ void loop() {
 In this proof of concept we were able to discover and experience the connectivity and the command broadcast process. We could also test the range of the connection and the reliability over time. 
 The next step is to build complex business storyboards such as registering devices through a AP portal without LoS (line of sight), store commands in the RFID card’s 1KB storage, broadcast commands to connected furniture such as turn on built in LEDs as obsolescence indicators or turn on built in LED indicators for selected furniture for move, information being broadcasted to the devices from selected RFID keys, and more. 
 
-Here is a photo of the my setup. Devices are powered by 3 X 1.5V AA batteries in a  three AA battery holder with USB-C connector.
+Here is a ![photo](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/PXL_20240605_062239013.jpg) of the my setup. Devices are powered by 3 X 1.5V AA batteries in a  three AA battery holder with USB-C connector.
 
 Fore more information get in touch with mailto:zuban@pennyitsupport.eu 
