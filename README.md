@@ -142,7 +142,7 @@ Sector Block   0  1  2  3   4  5  6  7   8  9 10 11  12 13 14 15  AccessBits
 ```
 ### 2. Program the second Arduino Nano ESP32 as access point
 
-The second Arduino Nano ESP32, the A2 from the schematic will be programmed as Access Point and simple web server, getting commands from the local network. Commands will trigger LED activity as proof for the web call. Wire first the device A2 as showed in the schematic.
+The second Arduino Nano ESP32, the A2 from the schematic, will be programmed as Access Point and simple web server, getting commands from the local network. Commands will trigger LED activity as proof for the web call. Wire first the device A2 as showed in the schematic.
 
 The code (SimpleWiFi-Server.ino):
 
@@ -382,3 +382,9 @@ Here is my setup. ![photo](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/
 Devices are powered by 3 X 1.5V AA batteries in a  three AA battery holder with USB-C connector.
 
 Fore more information get in touch with mailto:zuban@pennyitsupport.eu 
+
+# Variant
+
+For a final product, the the second Arduino Nano ESP32, the A2 from the schematic, can be enclosed in a silicon sleeve from Arduino (see photo) ![photo](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/PXL_20240605_062239013.jpg) 
+In this case, instead of a external LED use the built in LED, conneced to D13
+
