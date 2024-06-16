@@ -393,6 +393,6 @@ You also need to slightly alter the program SimpleWiFi-Server.ino and replace in
 The built in LED is connected to the D13 of the device.
 
 Here is the final photo of the setup:
-![photo](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/PXL_20240605_062239013.jpg) 
+![photo](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/PXL_20240616_125353224.jpg)
 
 
