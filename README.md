@@ -165,6 +165,7 @@ The code (SimpleWiFi-Server.ino):
  Circuit:
  * WiFi shield attached
  * LED attached to pin 5
+ * Integrated LED attached to pin 13
 
  created for arduino 25 Nov 2012
  by Tom Igoe
@@ -182,6 +183,7 @@ IPAddress local_IP(192,168,1,10);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 WiFiServer server(80);
+int LED = 5;
 
 void setup()
 {
@@ -243,12 +245,12 @@ void loop(){
 
         // Check to see if the client request was "GET /H" or "GET /L":
         if (currentLine.endsWith("GET /H")) {
-          digitalWrite(5, HIGH);               // GET /H turns the LED on
+          digitalWrite(LED, HIGH);               // GET /H turns the LED on
           delay(2000);
-          digitalWrite(5, LOW); 
+          digitalWrite(LED, LOW); 
         }
         if (currentLine.endsWith("GET /L")) {
-          digitalWrite(5, LOW);                // GET /L turns the LED off
+          digitalWrite(LED, LOW);                // GET /L turns the LED off
         }
       }
     }
@@ -385,6 +387,12 @@ Fore more information get in touch with mailto:zuban@pennyitsupport.eu
 
 # Variant
 
-For a final product, the the second Arduino Nano ESP32, the A2 from the schematic, can be enclosed in a silicon sleeve from Arduino (see photo) ![photo](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/PXL_20240605_062239013.jpg) 
-In this case, instead of a external LED use the built in LED, conneced to D13
+For a final product, the the second Arduino Nano ESP32, the A2 from the schematic, can be enclosed in a [silicon sleeve from Arduino](https://store.arduino.cc/products/silicone-sleeve-arduino-nano-33-ble-sense).
+In this case, instead of an external LED, use the built in LED. To complete the setup, remove the wiring of the A2 Arduino Nano ESP32, remove the device from the breadboard and enclose it in the silicon sleeve. Beware the silicon sleeve is tight enough so you need to carefully stretch it in order to insert your device with headers.
+You also need to slightly alter the program SimpleWiFi-Server.ino and replace int LED = 5; with int LED = 13;
+The built in LED is connected to the D13 of the device.
+
+Here is the final photo of the setup:
+![photo](https://github.com/zubanst/Arduino-IoT-PoC/blob/main/PXL_20240605_062239013.jpg) 
+
 
