@@ -16,6 +16,7 @@
  Circuit:
  * WiFi shield attached
  * LED attached to pin 5
+ * Integrated LED attached to pin 13
 
  created for arduino 25 Nov 2012
  by Tom Igoe
@@ -33,6 +34,7 @@ IPAddress local_IP(192,168,1,10);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 WiFiServer server(80);
+int LED = 5;
 
 void setup()
 {
@@ -42,7 +44,7 @@ void setup()
     Serial.begin(115200);
     WiFi.softAPConfig(local_IP, gateway, subnet);
     Serial.println(WiFi.softAP(ssid, password) ? "Ready" : "Fail");
-    pinMode(5, OUTPUT);      // set the LED pin mode
+    pinMode(LED, OUTPUT);      // set the LED pin mode
 
     delay(10);
 
@@ -94,12 +96,12 @@ void loop(){
 
         // Check to see if the client request was "GET /H" or "GET /L":
         if (currentLine.endsWith("GET /H")) {
-          digitalWrite(5, HIGH);               // GET /H turns the LED on
+          digitalWrite(LED, HIGH);               // GET /H turns the LED on
           delay(2000);
-          digitalWrite(5, LOW); 
+          digitalWrite(LED, LOW); 
         }
         if (currentLine.endsWith("GET /L")) {
-          digitalWrite(5, LOW);                // GET /L turns the LED off
+          digitalWrite(LED, LOW);                // GET /L turns the LED off
         }
       }
     }
