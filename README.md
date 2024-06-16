@@ -387,9 +387,16 @@ Fore more information get in touch with mailto:zuban@pennyitsupport.eu
 
 # Variant
 
-For a final product, the the second Arduino Nano ESP32, the A2 from the schematic, can be enclosed in a [silicon sleeve from Arduino](https://store.arduino.cc/products/silicone-sleeve-arduino-nano-33-ble-sense).
+For a final product, the second Arduino Nano ESP32, the A2 from the schematic, can be enclosed in a [silicon sleeve from Arduino](https://store.arduino.cc/products/silicone-sleeve-arduino-nano-33-ble-sense).
 In this case, instead of an external LED, use the built in LED. To complete the setup, remove the wiring of the A2 Arduino Nano ESP32, remove the device from the breadboard and enclose it in the silicon sleeve. Beware the silicon sleeve is tight enough so you need to carefully stretch it in order to insert your device with headers.
-You also need to slightly alter the program SimpleWiFi-Server.ino and replace int LED = 5; with int LED = 13;
+You also need to slightly alter the program SimpleWiFi-Server.ino and replace 
+```
+int LED = 5;
+```
+ with 
+``` 
+ int LED = 13;
+```
 The built in LED is connected to the D13 of the device.
 
 Here is the final photo of the setup:
